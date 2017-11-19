@@ -16,6 +16,37 @@
         android:layout_height="wrap_content" />
 
     <!--Content-->
+    <LinearLayout
+        android:layout_marginLeft="@dimen/my_margin"
+        android:layout_marginRight="@dimen/my_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <!--us to th-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Date = "/>
+
+        <!--rate-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Rate = "/>
+
+        <!--textFile of usd-->
+
+        <!--show ans-->
+
+    </LinearLayout>
 
 
 
