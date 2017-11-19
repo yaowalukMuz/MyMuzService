@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yodpanom.yaowaluk.mymuzservice.R;
 import com.yodpanom.yaowaluk.mymuzservice.utility.GetJSON;
@@ -36,9 +39,58 @@ public class SecondFragment extends Fragment{
         //show date from json data
         showDate();
 
+        //Show Rate
+        showRate();
+
+        //  Calculate Exchange Controller
+        exchangeController();
+
 
 
     }// Main Method
+
+    private void exchangeController() {
+        Button button = getView().findViewById(R.id.btnExchange);
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = getView().findViewById(R.id.edtUsd);
+                usdString = editText.getText().toString().trim();
+
+                if(usdString.isEmpty()){
+                //   Have Space
+                    Toast.makeText(getActivity(),"Please Fill USD", Toast.LENGTH_SHORT).show();
+                }else{
+                //    No Space
+//                   double usdAdouble = Double.parseDouble(usdString) ;
+//                    double answerAdouble = usdAdouble *  rateADouble;
+                    answerString = String.valueOf(Double.valueOf(usdString) * rateADouble);
+//                    showAnswer();
+                    TextView textView = getView().findViewById(R.id.txtAnswer);
+                    textView.setText(answerString + " THB");
+                }
+
+            }
+        });
+
+    }
+
+     private void showRate() {
+        TextView textView = getView().findViewById(R.id.txtShowRate);
+
+        try {
+            JSONArray jsonArray = new JSONArray(jsonRateString);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            rateADouble = jsonObject.getDouble("THB");
+            Log.d("19NovV1", "RateString____>" + " " + rateADouble);
+            textView.setText(getText(R.string.rate) + " " + rateADouble.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void showDate() {
         TextView textView = getView().findViewById(R.id.txtShowDate);
@@ -55,12 +107,9 @@ public class SecondFragment extends Fragment{
 
             Log.d("19NovV1", "jsonRateString____>" + " " + jsonRateString);
 
-            JSONArray jsonArray1 = new JSONArray(jsonRateString);
-            JSONObject jsonObject1 = jsonArray1.getJSONObject(0);
-            rateString = jsonObject1.getString("THB");
-            Log.d("19NovV1", "RateString____>" + " " + rateString);
 
-            textV
+
+
 
 
         } catch (Exception e) {
