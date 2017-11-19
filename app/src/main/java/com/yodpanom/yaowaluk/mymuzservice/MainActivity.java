@@ -2,6 +2,7 @@ package com.yodpanom.yaowaluk.mymuzservice;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.yodpanom.yaowaluk.mymuzservice.fragment.MainFragment;
 
@@ -19,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.contentFragmentMain, new MainFragment()).commit();
         }
+
+
+//        Drawer Controller
+
+        TextView mainTextView = findViewById(R.id.txtMain);
+        TextView secondTextView = findViewById(R.id.txtSecond);
+        TextView exitTextView = findViewById(R.id.txtExit);
+
 
     }//Main Method
 
